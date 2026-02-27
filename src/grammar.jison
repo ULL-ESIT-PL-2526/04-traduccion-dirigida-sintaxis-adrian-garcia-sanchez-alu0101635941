@@ -48,11 +48,10 @@ function operate(op, left, right) {
 }
 
 
-/* 3.1 Al utilizar /* skip whitespace */, se reconoce el patrón pero no se devuelve nada. Pero al enviar un token, este hace que participe en la gramática, complicandola más de lo necesario.
-Cuando sabemos que existe una secuencia de caracteres que queremos ignorar, lo mejor es no usar tokens.
-   3.2 La secuencia de tokens para 123**45+@ será : (123)NUMBER (**)OP (45)NUMBER (+)OP (@)INVALID EOF.
-   3.3 ** debe aparecer antes que [+-*/] en el analizador léxico debido a que este busca la secuencia más larga, y van por orden de aparición en las normas escritas. Debido a que en la norma [+-*/] también
-se busca el caracter *, priorizamos la posibilidad de que existan dos caracteres ** seguidos.
-   3.4 Se devuelve EOF cuando el lexer llega al final del flujo de entrada y no quedan más caracteres por leer. Este token se obtiene cuando el lexer ha terminado de leer el texto.
-   3.5 Para capturar cualquier caracter no reconocido por las reglas anteriores y evitar que se quede atascado cuando se encuentre con algo que no se haya explicado explícitamente.
-*/
+/* 3.1 Al utilizar /* skip whitespace */, se reconoce el patrón pero no se devuelve nada. Pero al enviar un token, este hace que participe en la gramática, complicandola más de lo necesario. */
+/* Cuando sabemos que existe una secuencia de caracteres que queremos ignorar, lo mejor es no usar tokens.                                                                                     */
+/*   3.2 La secuencia de tokens para 123**45+@ será : (123)NUMBER (**)OP (45)NUMBER (+)OP (@)INVALID EOF.                                                                                      */
+/*   3.3 ** debe aparecer antes que [+-*/] en el analizador léxico debido a que este busca la secuencia más larga, y van por orden de aparición en las normas escritas. Debido a que en la     */
+/* norma [+-*/] también se busca el caracter *, priorizamos la posibilidad de que existan dos caracteres ** seguidos.                                                                          */
+/*   3.4 Se devuelve EOF cuando el lexer llega al final del flujo de entrada y no quedan más caracteres por leer. Este token se obtiene cuando el lexer ha terminado de leer el texto.         */
+/*   3.5 Para capturar cualquier caracter no reconocido por las reglas anteriores y evitar que se quede atascado cuando se encuentre con algo que no se haya explicado explícitamente.         */
