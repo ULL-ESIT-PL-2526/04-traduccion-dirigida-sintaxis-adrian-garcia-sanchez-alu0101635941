@@ -8,7 +8,7 @@
 "**"                                { return 'OP';           }
 [-+*/]                              { return 'OP';           }
 <<EOF>>                             { return 'EOF';          }
-"//".*                              { /* skip commentline */;} /* Modificado */
+"//"[^\n]*                              { /* skip commentline */;} /* Modificado */
 .                                   { return 'INVALID';      }
 /lex 
 
