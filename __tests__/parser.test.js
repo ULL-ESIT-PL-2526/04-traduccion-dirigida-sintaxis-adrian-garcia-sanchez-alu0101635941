@@ -110,7 +110,7 @@ describe('Parser Tests', () => {
       expect(() => parse("3 +")).toThrow();
       expect(() => parse("+ 3")).toThrow();
       expect(() => parse("3 + + 4")).toThrow();
-      expect(() => parse("3.5")).toThrow(); // Only integers are supported
+      expect(() => parse("3.5")).toBe(3.5); // Now float is supported
     });
 
     test('should handle incomplete expressions', () => {
@@ -128,4 +128,20 @@ describe('Parser Tests', () => {
     });
   });
 
+  describe('Soporte de números en punto flotante', () => {
+    test('Debe reconocer notación científica con exponente negativo', () => {
+      expect(parse("2.35e-3")).toBeCloseTo(0.00235);
+    });
+    test('Debe reconocer notación científica con exponente positivo', () => {
+      expect(parse("2.35e+3")).toBe(2350);
+    });
+    test('debe reconocer notación científica con E mayúscula', () => {
+      expect(parse("2.35E-3")).toBeCloseTo(0.00235);
+    });
+    test('debe reconocer números decimales', () => {
+      expect(parse("2.35")).toBe(2.35);
+    });
+    test('debe seguir reconociendo números enteros', () => {
+      expect(parse(23)).toBe(23);
+    });
 });
